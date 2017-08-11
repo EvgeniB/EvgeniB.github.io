@@ -17,7 +17,7 @@
             var game_intervalId = setInterval(run_loop, 1000 / fps);
         }
 
-        update = function() {
+        update() {
             while(this.CelestialObj < this.maxCelestialObj) {
                 this.CelestialObj++;
                 var x = Number(Math.random()*this.width);
@@ -27,7 +27,7 @@
             }
         }
 
-        draw = function() {
+        draw() {
             var canvas = $('#myCanvas');
             for(var i=0;i<this.CelestialObj;i++) {
                 var x = CelestialObjs[i].x, y = CelestialObjs[i].y,
