@@ -1,13 +1,70 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Default Title</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>//Main script
+    var gameObj = GameState();
+
+    class GameState {
+        constructor() {
+            const maxCelestialObj = 50;
+            const fps = 100;
+            const width = 1000, height = 800;
+            this.CelestialObj = 0;
+            this.CelestialObjs = [];
+            var game_intervalId = setInterval(run_loop, 1000 / fps);
+        }
+
+        update = function() {
+            while(this.CelestialObj < this.maxCelestialObj) {
+                this.CelestialObj++;
+                var x = Number(Math.random()*this.width);
+                var y = Number(Math.random()*this.height);
+                var size = Number(Math.random()*30);
+                this.CelestialObjs.push(new CelestialObject(x, y, size));
+            }
+        }
+
+        draw = function() {
+            var canvas = $('#myCanvas');
+            for(var i=0;i<this.CelestialObj;i++) {
+                var x = CelestialObjs[i].x, y = CelestialObjs[i].y,
+                    size = CelestialObjs[i].size;
+                var ctx = canvas.getContext("2d");
+                ctx.fillStyle = "red";
+                ctx.beginPath();
+                ctx.arc(x, y, size,0,2*Math.PI);
+                ctx.stroke();
+            }
+        }
+
+        run_loop = function() {
+            this.update();
+            this.draw();
+        }
+    }
+
+    class CelestialObject {
+        constructor(x, y, size) {
+            this.x = x;
+            this.y = y;
+            this.size = size;
+        }
+        toString() {
+            return `(${this.x}, ${this.y}, ${this.size})`;
+        }
+    }
+
+    class Space {
+
+
+    }
+    </script>
 </head>
-
 <body>
-<header>Default Header</header>
+<canvas id="myCanvas" width="1000" height="800" style="background:black;"></canvas>
 
-<section>Default Content Section</section>
-
-<footer>Default Footer</footer>
 </body>
 </html>
