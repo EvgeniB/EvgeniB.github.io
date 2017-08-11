@@ -26,7 +26,7 @@
         }
 
         draw() {
-            var canvas = $('#myCanvas');
+            var canvas = $('#myCanvas')[0];
             var ctx = canvas.getContext("2d");
             for(var i=0;i<this.CelestialObj;i++) {
                 var x = CelestialObjs[i].x, y = CelestialObjs[i].y,
