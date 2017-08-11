@@ -27,10 +27,10 @@
 
         draw() {
             var canvas = $('#myCanvas');
+            var ctx = canvas.getContext("2d");
             for(var i=0;i<this.CelestialObj;i++) {
                 var x = CelestialObjs[i].x, y = CelestialObjs[i].y,
                     size = CelestialObjs[i].size;
-                var ctx = canvas.getContext("2d");
                 ctx.beginPath();
                 ctx.arc(x, y, size,0,2*Math.PI);
                 ctx.fillStyle = 'white';
