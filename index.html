@@ -29,8 +29,8 @@
             var canvas = document.getElementById("myCanvas");
             var ctx = canvas.getContext("2d");
             for(var i=0;i<this.CelestialObj;i++) {
-                var x = CelestialObjs[i].x, y = CelestialObjs[i].y,
-                    size = CelestialObjs[i].size;
+                var x = this.CelestialObjs[i].x, y = this.CelestialObjs[i].y,
+                    size = this.CelestialObjs[i].size;
                 ctx.beginPath();
                 ctx.arc(x, y, size,0,2*Math.PI);
                 ctx.fillStyle = 'white';
