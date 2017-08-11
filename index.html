@@ -33,11 +33,18 @@
                 var x = CelestialObjs[i].x, y = CelestialObjs[i].y,
                     size = CelestialObjs[i].size;
                 var ctx = canvas.getContext("2d");
-                ctx.fillStyle = "red";
                 ctx.beginPath();
                 ctx.arc(x, y, size,0,2*Math.PI);
+                ctx.fillStyle = 'white';
+                ctx.fill();
+                //context.lineWidth = 5;
+                //context.strokeStyle = '#003300';
                 ctx.stroke();
             }
+
+            var img = new Image;
+            img.src = "https://raw.githubusercontent.com/EvgeniB/EvgeniB.github.io/master/boss1.png";
+            ctx.drawImage(img, this.width/2, this.height/2);
         }
 
         run_loop = function() {
@@ -64,7 +71,7 @@
     </script>
 </head>
 <body>
-<canvas id="myCanvas" width="1000" height="800" style="background:black;"></canvas>
+<canvas id="myCanvas" width="1000" height="800" style="background:black;display:block;margin:auto;"></canvas>
 
 </body>
 </html>
