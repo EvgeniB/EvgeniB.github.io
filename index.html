@@ -12,7 +12,7 @@
             const width = 1000, height = 800;
             this.CelestialObj = 0;
             this.CelestialObjs = [];
-            var game_intervalId = setInterval(this.run_loop(), 1000 / fps);
+            var game_intervalId = setInterval(function() {alert("1");}, 1000 / fps);
         }
 
         update() {
