@@ -8,7 +8,7 @@
     class GameState {
         constructor() {
             const maxCelestialObj = 50;
-            const fps = 100;
+            const fps = 1;
             const width = 1000, height = 800;
             this.CelestialObj = 0;
             this.CelestialObjs = [];
@@ -48,6 +48,7 @@
         run_loop() {
             this.update();
             this.draw();
+            alert(this.CelestialObj);
         }
     }
 
