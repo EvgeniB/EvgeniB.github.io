@@ -7,29 +7,32 @@
     <script>//Main script
     class GameState {
         constructor() {
-            const maxCelestialObj = 50;
-            const fps = 1;
-            const width = 1000, height = 800;
+            this.maxCelestialObj = 50;
+            this.fps = 1;
+            this.width = 1000, this.height = 800;
             this.CelestialObj = 0;
             this.CelestialObjs = [];
-            var game_intervalId = setInterval(function() {alert("1");}, 1000 / fps);
+        }
+
+        start(func) {
+            let game_intervalId = setInterval(func, 1000 / this.fps);
         }
 
         update() {
             while(this.CelestialObj < this.maxCelestialObj) {
                 this.CelestialObj++;
-                var x = Number(Math.random()*this.width);
-                var y = Number(Math.random()*this.height);
-                var size = Number(Math.random()*30);
+                let x = Number(Math.random()*this.width);
+                let y = Number(Math.random()*this.height);
+                let size = Number(Math.random()*30);
                 this.CelestialObjs.push(new CelestialObject(x, y, size));
             }
         }
 
         draw() {
-            var canvas = document.getElementById("myCanvas");
-            var ctx = canvas.getContext("2d");
-            for(var i=0;i<this.CelestialObj;i++) {
-                var x = this.CelestialObjs[i].x, y = this.CelestialObjs[i].y,
+            let canvas = document.getElementById("myCanvas");
+            let ctx = canvas.getContext("2d");
+            for(let i=0;i<this.CelestialObj;i++) {
+                let x = this.CelestialObjs[i].x, y = this.CelestialObjs[i].y,
                     size = this.CelestialObjs[i].size;
                 ctx.beginPath();
                 ctx.arc(x, y, size,0,2*Math.PI);
@@ -40,14 +43,14 @@
                 ctx.stroke();
             }
 
-            var img = new Image;
+            let img = new Image;
             img.src = "https://raw.githubusercontent.com/EvgeniB/EvgeniB.github.io/master/boss1.png";
             ctx.drawImage(img, this.width/2, this.height/2);
         }
 
         run_loop() {
-            this.update();
-            this.draw();
+            //this.update();
+            //this.draw();
             alert(this.CelestialObj);
         }
     }
@@ -68,7 +71,9 @@
 
     }
     window.onload = function(){
-        var gameObj = new GameState();
+        let gameObj = new GameState();
+        gameObj.start(gameObj.run_loop);
+        gameObj.run_loop();
     }
     </script>
 </head>
